@@ -1,0 +1,182 @@
+.thank-you-page {
+    padding-top: 120px;
+    background-color: var(--bg-primary);
+}
+
+/* Hero Section */
+.thank-you-hero-section {
+    padding-bottom: 80px;
+}
+
+.thank-you-hero {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 80px 48px;
+    border-radius: 28px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-card);
+}
+
+.confirmation-icon-box {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.text-brand {
+    color: var(--brand-primary);
+}
+
+.hero-subtext {
+    max-width: 600px;
+    margin: 0 auto 48px;
+    color: var(--text-secondary);
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Trust Metrics */
+.thank-you-metrics-section {
+    padding-bottom: 80px;
+}
+
+.trust-strip-horizontal {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.metric-card-flat {
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.metric-value-large {
+    display: block;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--brand-primary);
+    margin-bottom: 4px;
+}
+
+.metric-label-small {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Next Steps */
+.next-steps-section {
+    padding-bottom: 112px;
+}
+
+.centered {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.next-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.step-card {
+    padding: 32px;
+    border-radius: 20px;
+    background: #F8F9FB;
+    border: none;
+    height: 100%;
+    text-align: left;
+}
+
+.step-icon-box {
+    margin-bottom: 20px;
+    width: 44px;
+    height: 44px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.step-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.step-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Final CTA */
+.thank-you-final-cta {
+    padding-bottom: 112px;
+}
+
+.final-cta-container.dark-premium {
+    background: #0B1220;
+    padding: 100px 48px;
+    border-radius: 32px;
+    text-align: center;
+    color: white;
+}
+
+.text-muted-white {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 48px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.max-emphasis {
+    padding: 20px 48px !important;
+    font-size: 17px !important;
+    border-radius: 18px !important;
+}
+
+@media (max-width: 1024px) {
+    .next-steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .trust-strip-horizontal {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .next-steps-grid,
+    .trust-strip-horizontal {
+        grid-template-columns: 1fr;
+    }
+
+    .thank-you-hero {
+        padding: 60px 24px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,98 @@
+/* -------------------------------------------------------------------------- */
+/*                                BUTTON SYSTEM                                 */
+/* -------------------------------------------------------------------------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    /* Base Sizing & Shape */
+    border-radius: var(--radius-md);
+    /* 16px */
+    padding: 14px 24px;
+
+    /* Typography */
+    font-family: var(--font-family);
+    font-weight: var(--weight-semibold);
+    /* 600 */
+    font-size: var(--text-body);
+    /* 16px default */
+    line-height: 1;
+
+    /* Interaction */
+    cursor: pointer;
+    border: none;
+    transition: var(--transition-normal);
+    text-decoration: none;
+}
+
+/* Hover Effect: Lift & Scale (Global) */
+.btn:hover:not(:disabled) {
+    transform: scale(1.02) translateY(-2px);
+}
+
+.btn:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  VARIANTS                                    */
+/* -------------------------------------------------------------------------- */
+
+/* PRIMARY */
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--neutral-white);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+    box-shadow: var(--shadow-hover);
+}
+
+/* SECONDARY (Outline) */
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--neutral-light-gray);
+    color: var(--neutral-black);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    border-color: var(--primary);
+    color: var(--primary);
+    background-color: transparent;
+}
+
+/* GHOST */
+.btn-ghost {
+    background-color: transparent;
+    color: var(--neutral-gray);
+}
+
+.btn-ghost:hover:not(:disabled) {
+    color: var(--primary);
+    background-color: rgba(0, 164, 147, 0.05);
+    /* Slight primary tint */
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    SIZES                                     */
+/* -------------------------------------------------------------------------- */
+.btn-sm {
+    padding: 12px 18px;
+    font-size: var(--text-label);
+}
+
+.btn-lg {
+    padding: 18px 32px;
+    font-size: var(--text-body-lg);
+    border-radius: var(--radius-lg);
+}

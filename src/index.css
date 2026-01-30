@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* -------------------------------------------------------------------------- */
+  /*                                COLOR PALETTE                               */
+  /* -------------------------------------------------------------------------- */
+
+  /* Brand Accent */
+  --primary: #00A493;
+  --primary-hover: #009080;
+  /* Calculated for hover state based on YAML */
+
+  /* Neutral scale */
+  --neutral-black: #0F172A;
+  --neutral-dark-gray: #1E293B;
+  --neutral-gray: #64748B;
+  --neutral-light-gray: #CBD5E1;
+  --neutral-background: #F8FAFC;
+  --neutral-white: #FFFFFF;
+
+  /* Semantic Colors */
+  --semantic-success: #16A34A;
+  --semantic-warning: #F59E0B;
+  --semantic-error: #DC2626;
+
+  /* -------------------------------------------------------------------------- */
+  /*                                TYPOGRAPHY                                  */
+  /* -------------------------------------------------------------------------- */
+  --font-family: 'Inter', sans-serif;
+
+  /* Font Sizes */
+  --text-display: 48px;
+  --text-h1: 42px;
+  --text-h2: 32px;
+  --text-h3: 24px;
+  --text-h4: 20px;
+  --text-body-lg: 18px;
+  --text-body: 16px;
+  --text-label: 14px;
+
+  /* Font Weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Line Heights */
+  --leading-tight: 1.15;
+  --leading-normal: 1.2;
+  --leading-relaxed: 1.7;
+
+  /* -------------------------------------------------------------------------- */
+  /*                                  SPACING                                   */
+  /* -------------------------------------------------------------------------- */
+
+  /* Vertical Spacing System */
+  --section-gap: 120px;
+  /* Rhythm between visual chapters */
+  --section-padding: 96px;
+  /* Internal comfort padding */
+
+  /* Tablet Spacing */
+  --section-gap-tablet: 96px;
+  --section-padding-tablet: 72px;
+
+  /* Mobile Spacing */
+  --section-gap-mobile: 72px;
+  --section-padding-mobile: 56px;
+
+  /* Layout Authority */
+  --container-max-width: 1320px;
+  /* Wide Desktop Standard */
+  --container-padding: 24px;
+  /* Horizontal Safety */
+  --container-padding-mobile: 16px;
+
+  --card-gap: 32px;
+  /* Grid-based layout standard */
+  --section-md: var(--section-padding);
+  /* Legacy compatibility mapped to new */
+  --section-lg: var(--section-gap);
+  /* Legacy compatibility mapped to new */
+
+  /* -------------------------------------------------------------------------- */
+  /*                                  RADIUS                                    */
+  /* -------------------------------------------------------------------------- */
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  /* -------------------------------------------------------------------------- */
+  /*                                  SHADOWS                                   */
+  /* -------------------------------------------------------------------------- */
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --shadow-hover: 0 20px 40px rgba(15, 23, 42, 0.12);
+  --shadow-focus: 0 0 0 4px rgba(0, 164, 147, 0.15);
+
+  /* -------------------------------------------------------------------------- */
+  /*                                 TRANSITIONS                                */
+  /* -------------------------------------------------------------------------- */
+  --transition-fast: all 0.2s ease;
+  --transition-normal: all 0.3s ease;
+  --transition-slow: all 0.5s ease;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                GLOBAL RESET                                  */
+/* -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--neutral-background);
+  color: var(--neutral-black);
+  line-height: var(--leading-relaxed);
+  font-size: var(--text-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                TYPOGRAPHY MAP                                */
+/* -------------------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--neutral-black);
+  margin-bottom: 0.5em;
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+}
+
+h1 {
+  font-size: var(--text-h1);
+}
+
+h2 {
+  font-size: var(--text-h2);
+  font-weight: var(--weight-semibold);
+}
+
+h3 {
+  font-size: var(--text-h3);
+  font-weight: var(--weight-semibold);
+}
+
+h4 {
+  font-size: var(--text-h4);
+  font-weight: var(--weight-semibold);
+}
+
+p {
+  margin-bottom: 1em;
+  color: var(--neutral-gray);
+  /* Default body text color often benefits from being slightly softer */
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               LAYOUT UTILITIES                               */
+/* -------------------------------------------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.section {
+  padding-top: var(--section-md);
+  padding-bottom: var(--section-md);
+}
+
+.section-lg {
+  padding-top: var(--section-lg);
+  padding-bottom: var(--section-lg);
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--card-gap);
+}
+
+/* Text Utilities */
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-display {
+  font-size: var(--text-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 FORM SYSTEM                                  */
+/* -------------------------------------------------------------------------- */
+/* Global Input Styles */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  height: 52px;
+  /* Fixed height per spec */
+  padding: 12px 16px;
+  background-color: var(--neutral-white);
+  border: 1px solid var(--neutral-light-gray);
+  border-radius: 14px;
+  /* Spec: 14px */
+  color: var(--neutral-black);
+  transition: var(--transition-normal);
+  outline: none;
+  font-size: var(--text-body);
+  font-family: inherit;
+  appearance: none;
+}
+
+textarea {
+  height: auto;
+  min-height: 120px;
+  resize: vertical;
+  border: 1px solid var(--neutral-light-gray) !important;
+  /* Force simple border */
+  box-shadow: none !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 1px var(--primary) !important;
+  outline: none;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  color: var(--neutral-black);
+}
+
+.form-group {
+  margin-bottom: 20px;
+  /* Spec: spacing_between_fields 20px */
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                CARD SYSTEM                                   */
+/* -------------------------------------------------------------------------- */
+.card {
+  background-color: var(--neutral-white);
+  border-radius: var(--radius-lg);
+  /* Spec: 24px */
+  padding: 32px;
+  /* Spec: 32px */
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition-normal);
+  border: none;
+}
+
+.card:hover,
+.card-hover:hover {
+  transform: translateY(-4px);
+  /* Spec: lift */
+  background-color: var(--neutral-white);
+  box-shadow: var(--shadow-hover);
+}
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.card-dark {
+  background-color: var(--neutral-black);
+  color: var(--neutral-white);
+}

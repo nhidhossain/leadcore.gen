@@ -1,0 +1,304 @@
+.pricing-page {
+    padding-top: var(--section-lg);
+    background-color: var(--neutral-background);
+}
+
+.pricing-hero {
+    padding-bottom: var(--section-md);
+}
+
+.pricing-hero-content {
+    text-align: center;
+    background: var(--neutral-white);
+    padding: 100px 40px;
+    border-radius: var(--radius-xl);
+    /* radius-section */
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 1px solid var(--neutral-light-gray);
+    box-shadow: var(--shadow-card);
+}
+
+.pricing-hero-content h1 {
+    margin-bottom: 24px;
+}
+
+color: var(--neutral-gray);
+}
+
+.hero-visual {
+    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+}
+
+.pricing-visual-orb {
+    width: 200px;
+    height: 200px;
+    background: var(--neutral-background);
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.visual-circle-large {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background: rgba(0, 164, 147, 0.12);
+    border-radius: 50%;
+    animation: pulse 4s infinite ease-in-out;
+}
+
+.subtle-float {
+    animation: floating 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.pricing-tiers-section {
+    padding-bottom: 112px;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.pricing-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    /* Base styles inherit from global .card */
+}
+
+.pricing-card.highlight-glow {
+    border: 2px solid var(--primary);
+    /* highlight */
+    box-shadow: 0 20px 40px rgba(0, 164, 147, 0.08);
+    transform: translateY(-8px);
+}
+
+.tier-header {
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.tier-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+}
+
+.tier-price {
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--neutral-black);
+    margin-bottom: 12px;
+}
+
+.tier-description {
+    color: var(--neutral-gray);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.tier-features {
+    list-style: none;
+    margin-bottom: 40px;
+    flex: 1;
+    padding: 0;
+}
+
+.tier-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--neutral-black);
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+.icon-brand {
+    color: var(--primary);
+}
+
+.w-100 {
+    width: 100%;
+}
+
+/* Comparison Table */
+.comparison-section {
+    padding-bottom: var(--section-md);
+}
+
+.comparison-table-wrapper {
+    background: var(--neutral-white);
+    border-radius: 20px;
+    border: 1px solid var(--neutral-light-gray);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 24px 32px;
+    text-align: center;
+    border-bottom: 1px solid var(--neutral-light-gray);
+}
+
+.comparison-table th {
+    background: #F9FAFB;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--neutral-black);
+}
+
+.comparison-table th:first-child {
+    text-align: left;
+}
+
+.feature-name {
+    text-align: left;
+    font-weight: 600;
+    color: var(--neutral-black);
+}
+
+.tier-val {
+    font-size: 14px;
+    color: var(--neutral-gray);
+}
+
+.dash {
+    color: var(--neutral-gray);
+    opacity: 0.5;
+}
+
+/* FAQs */
+.pricing-faq-section {
+    padding-bottom: 112px;
+}
+
+.faq-list {
+    max-width: 840px;
+    margin: 64px auto 0;
+}
+
+.faq-item {
+    background: var(--neutral-white);
+    border-radius: 16px;
+    border: 1px solid var(--neutral-light-gray);
+    margin-bottom: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.faq-item.active {
+    border-color: var(--primary);
+}
+
+.faq-question {
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--neutral-black);
+}
+
+.faq-answer {
+    padding: 0 32px 24px;
+    color: var(--neutral-gray);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.chevron.rotate {
+    transform: rotate(180deg);
+}
+
+/* Final CTA */
+.pricing-final-cta {
+    padding-bottom: var(--section-lg);
+}
+
+.final-cta-container.dark-premium {
+    background: var(--neutral-black);
+    padding: 100px 40px;
+    border-radius: 32px;
+    text-align: center;
+    color: white;
+    background-image: radial-gradient(circle at top right, rgba(0, 164, 147, 0.1), transparent);
+}
+
+.final-cta-container h2 {
+    color: white;
+    margin-bottom: 24px;
+}
+
+.final-cta-container p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 48px;
+}
+
+@media (max-width: 1024px) {
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 16px;
+        font-size: 13px;
+    }
+}

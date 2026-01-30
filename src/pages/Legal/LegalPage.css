@@ -1,0 +1,151 @@
+.legal-page {
+    padding-top: 120px;
+    background-color: var(--bg-primary);
+}
+
+.container {
+    max-width: 900px;
+    padding: 0 32px;
+    margin: 0 auto;
+}
+
+/* Hero Section */
+.legal-hero-section {
+    padding-bottom: 64px;
+}
+
+.legal-hero {
+    text-align: center;
+    background: white;
+    padding: 80px 48px;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-card);
+}
+
+.legal-hero .eyebrow {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--brand-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.legal-hero h1 {
+    margin-bottom: 24px;
+}
+
+.hero-subtext {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    color: var(--text-secondary);
+}
+
+/* Content Card */
+.legal-content-section {
+    padding-bottom: 64px;
+}
+
+.legal-card {
+    padding: 64px;
+    border-radius: 20px;
+}
+
+.legal-content-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.content-block h2 {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.text-brand {
+    color: var(--brand-primary);
+}
+
+.mr-12 {
+    margin-right: 12px;
+}
+
+.content-block p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.legal-nav-strip {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.legal-link-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--brand-primary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.legal-link-btn:hover {
+    transform: translateX(4px);
+}
+
+/* Final CTA */
+.legal-final-cta-section {
+    padding-bottom: 112px;
+}
+
+.final-cta-container.dark-premium {
+    background: #0B1220;
+    padding: 100px 48px;
+    border-radius: 32px;
+    text-align: center;
+    color: white;
+}
+
+.text-muted-white {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 48px;
+}
+
+.white {
+    color: white;
+}
+
+.max-emphasis {
+    padding: 20px 48px !important;
+    font-size: 17px !important;
+    border-radius: 18px !important;
+}
+
+@media (max-width: 768px) {
+    .legal-card {
+        padding: 40px 24px;
+    }
+
+    .legal-hero {
+        padding: 60px 24px;
+    }
+
+    .legal-nav-strip {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+}

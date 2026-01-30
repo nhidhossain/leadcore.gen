@@ -1,0 +1,5 @@
+/* Card styles are now handled globally in index.css */
+/* This file is kept to prevent import errors but styles are delegated to the global system. */
+.card {
+    /* Inherits from global .card */
+}

@@ -1,0 +1,69 @@
+.cases-section {
+    padding: var(--section-md) 0;
+}
+
+.cases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--card-gap);
+    /* 32px */
+}
+
+.case-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.case-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.case-tag {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary);
+    background: rgba(0, 164, 147, 0.1);
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+}
+
+.case-company {
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+.case-result-display {
+    padding: 24px;
+    background: var(--neutral-background);
+    border-radius: 16px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.case-result-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.case-result-metric {
+    font-size: 14px;
+    color: var(--neutral-gray);
+    font-weight: 500;
+}
+
+.case-desc {
+    color: var(--neutral-gray);
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+    .cases-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,321 @@
+.case-studies-page {
+    padding-top: var(--section-lg);
+    background-color: var(--neutral-background);
+}
+
+.case-hero-section {
+    padding-bottom: var(--section-md);
+}
+
+.case-hero-card {
+    text-align: center;
+    background: var(--neutral-white);
+    padding: 100px 24px;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--neutral-light-gray);
+    box-shadow: var(--shadow-soft);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+}
+
+.case-hero-card .eyebrow {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.case-hero-card h1 {
+    margin-bottom: 24px;
+}
+
+.hero-subtext {
+    max-width: 600px;
+    margin: 0 auto 48px;
+    color: var(--neutral-gray);
+}
+
+/* Filter Bar */
+.filter-bar-section {
+    padding-bottom: 112px;
+}
+
+.filter-bar {
+    display: flex;
+    background: var(--neutral-white);
+    padding: 12px 32px;
+    border-radius: 20px;
+    border: 1px solid var(--neutral-light-gray);
+    box-shadow: var(--shadow-soft);
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.filter-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--neutral-gray);
+    letter-spacing: 0.5px;
+}
+
+.filter-select {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--neutral-black);
+    cursor: pointer;
+}
+
+.filter-search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--neutral-background);
+    padding: 10px 20px;
+    border-radius: 999px;
+    margin-left: auto;
+    min-width: 280px;
+    border: 1px solid transparent;
+}
+
+.filter-search input {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 14px;
+    width: 100%;
+    outline: none;
+    color: var(--neutral-black);
+}
+
+/* Case Grid */
+.case-grid-section {
+    padding-bottom: 112px;
+}
+
+.case-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.case-study-card {
+    /* Inherits global card padding 32px, radius 24px */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0;
+    /* Override because we have thumbnail full width? No, user wants STRICT 32px padding card. */
+    /* Let's strictly follow "Card padding 32px". If we have a thumbnail, maybe it's inside the padded area or the card design needs to change.
+       User said "ALL cards must follow... padding: 32px".
+       However, case studies usually have full-width images.
+       If I add padding:32px to .case-study-card, the thumbnail will shrink inside.
+       Let's stick to the Premium feel: Thumbnail inside the padding (like a rounded inner block) or Thumbnail edge-to-edge?
+       User said "No exception. Ever." for Padding 32px.
+       So I will remove padding:0 override and let global styling handle it.
+       I will wrap content properly.
+    */
+    background: var(--neutral-white);
+    padding: 32px;
+    /* Enforce */
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--neutral-light-gray);
+}
+
+.case-thumbnail {
+    height: 200px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    /* Rounded inside content */
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.service-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--neutral-black);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.case-content {
+    padding: 0;
+    /* Reset inner padding as parent has it */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.case-metrics {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.metric-label {
+    font-size: 13px;
+    color: var(--neutral-gray);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+.case-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+.case-excerpt {
+    color: var(--neutral-gray);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+/* Related Services */
+.related-services-section {
+    padding-bottom: 112px;
+}
+
+.related-services-scroll {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    padding: 10px 0 30px;
+    scrollbar-width: none;
+}
+
+.related-services-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.related-service-card {
+    min-width: 280px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    /* Local override for smaller card? User said ALL cards 32px. Let's try to stick to 32px or close. */
+    background: var(--neutral-white);
+    border: 1px solid var(--neutral-light-gray);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.related-service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary);
+}
+
+.service-icon-box {
+    width: 52px;
+    height: 52px;
+    background: rgba(0, 164, 147, 0.1);
+    color: var(--primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-name {
+    font-size: 16px;
+    font-weight: 600;
+    flex: 1;
+}
+
+.service-arrow {
+    color: var(--primary);
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform: translateX(-10px);
+}
+
+.related-service-card:hover .service-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Final CTA */
+.case-final-cta-section {
+    padding-bottom: 112px;
+}
+
+.final-cta-container.dark-premium {
+    background: var(--neutral-black);
+    padding: 100px 40px;
+    border-radius: 32px;
+    text-align: center;
+    color: white;
+    background-image: radial-gradient(circle at top right, rgba(0, 164, 147, 0.1), transparent);
+}
+
+.final-cta-container h2 {
+    color: white;
+    margin-bottom: 24px;
+}
+
+.final-cta-container p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 48px;
+}
+
+@media (max-width: 1024px) {
+    .case-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .case-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-bar {
+        gap: 24px;
+        padding: 24px;
+    }
+
+    .filter-search {
+        min-width: 100%;
+    }
+
+    .case-hero-card {
+        padding: 60px 24px;
+    }
+}
