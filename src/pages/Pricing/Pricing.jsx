@@ -119,7 +119,7 @@ const Pricing = () => {
             </section>
 
             {/* Plan Comparison */}
-            <section className="comparison-section container">
+            <section className="comparison-section container mt-5">
                 <div className="section-header">
                     <h2 className="section-title">Compare Plans</h2>
                 </div>

@@ -21,10 +21,11 @@
 
 .pricing-hero-content h1 {
     margin-bottom: 24px;
+    /* color: var(--neutral-gray); */
 }
 
-color: var(--neutral-gray);
-}
+
+
 
 .hero-visual {
     margin-top: 48px;
@@ -166,6 +167,7 @@ color: var(--neutral-gray);
 
 /* Comparison Table */
 .comparison-section {
+    margin-top: 20px;
     padding-bottom: var(--section-md);
 }
 
