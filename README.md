@@ -1,16 +1,182 @@
-# React + Vite
+## 🚀 Project Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**LeadCore** is a full-width, conversion-optimized agency portfolio designed to showcase services, case studies, pricing, and thought leadership content while supporting lead capture and admin-managed content.
 
-Currently, two official plugins are available:
+This project emphasizes:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Strong visual rhythm & spacing
+* Clean SaaS-style UI
+* Dynamic case studies & blog system
+* Admin panel for content management
+* SEO-friendly routing
+* Fast load times
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🎯 Goals & Objectives
 
-## Expanding the ESLint configuration
+* Present the agency as **premium, trustworthy, and results-driven**
+* Convert visitors into leads via strategic CTAs
+* Enable non-technical content updates through admin panel
+* Maintain strict design consistency across all pages
+* Ensure scalable architecture for future growth
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧱 Tech Stack
+
+* **Framework:** Antigravity
+* **Frontend:** Antigravity UI system
+* **CMS:** Built-in Antigravity collections
+* **Routing:** Dynamic slug-based routing
+* **Styling:** Token-based spacing & layout system
+* **Deployment:** Antigravity hosting (or compatible platform)
+
+---
+
+## 🧩 Core Features
+
+### Marketing Pages
+
+* Homepage (conversion-focused hero & sections)
+* Services
+* Pricing
+* Process
+* About
+* Contact
+* Blog
+* Case Studies (listing + detail pages)
+
+### Dynamic Content
+
+* Case Studies (slug-based dynamic pages)
+* Blog posts
+* Image & media management
+* Published/unpublished content control
+
+### Admin Panel
+
+* Add/edit/delete:
+
+  * Blog posts
+  * Case studies
+  * Images
+  * Page content
+* Draft & publish workflows
+
+### UX & Design System
+
+* Full-width background sections (100vw)
+* Centered content containers
+* Consistent spacing & padding tokens
+* Unified button, card, and form styles
+* Mobile-first responsive behavior
+
+---
+
+## 📐 Layout & Spacing System
+
+### Container Rules
+
+* Max content width: `1200px`
+* Wide desktop: `1320px`
+* Background sections span full viewport width
+* Horizontal padding:
+
+  * Desktop: `24px`
+  * Tablet: `20px`
+  * Mobile: `16px`
+
+### Vertical Rhythm
+
+* Section spacing:
+
+  * Desktop: `120px`
+  * Tablet: `96px`
+  * Mobile: `72px`
+* Internal section padding:
+
+  * Desktop: `96px`
+  * Tablet: `72px`
+  * Mobile: `56px`
+
+---
+
+## 🧭 Routing Structure
+
+```text
+/
+├─ /services
+├─ /pricing
+├─ /process
+├─ /about
+├─ /contact
+├─ /blog
+│  └─ /blog/{slug}
+├─ /case-studies
+│  └─ /case-studies/{slug}
+└─ /admin
+```
+
+* Case studies and blog posts use **dynamic slug-based routing**
+* Invalid slugs return a clean 404
+* Unpublished content is hidden from public routes
+
+---
+
+## 🗂 Case Study Data Model
+
+Each case study includes:
+
+* Title
+* Slug (unique)
+* Hero image
+* Client name
+* Industry
+* Services provided
+* Summary
+* Problem
+* Solution
+* Results
+* Metrics (optional)
+* Gallery images
+* Published status
+
+---
+
+## ✅ Quality Standards
+
+* No hardcoded routes for dynamic content
+* No inconsistent spacing between sections
+* No content touching viewport edges
+* No duplicate navigation items
+* No inconsistent button styles
+
+---
+
+## 📈 Success Criteria
+
+* Smooth, calm, premium scrolling experience
+* All CTAs function correctly
+* Case studies & blogs load dynamically without errors
+* Improved perceived quality without overdesign
+* Easy content updates via admin panel
+
+---
+
+## 🛠 Development Status
+
+* [x] Information architecture
+* [x] Spacing & layout system defined
+* [x] Case study routing fixed
+* [ ] Homepage UI polish
+* [ ] Component-level consistency pass
+* [ ] Performance optimization
+* [ ] SEO & analytics integration
+
+---
+
+## 📄 License
+
+This project is proprietary and intended for internal and client use only.
+All rights reserved.
