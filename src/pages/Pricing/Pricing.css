@@ -253,10 +253,10 @@
 }
 
 .faq-answer {
-    padding: 0 32px 24px;
+    padding: 24px 32px;
     color: var(--neutral-gray);
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: var(--text-body);
+    line-height: 1.7;
 }
 
 .chevron.rotate {

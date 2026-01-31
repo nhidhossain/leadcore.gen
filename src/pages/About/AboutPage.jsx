@@ -38,12 +38,8 @@ const AboutPage = () => {
                             At LeadCore, we combine strategy, technology, and creativity to deliver predictable growth for B2B businesses.
                         </p>
                         <div className="hero-actions">
-                            <Link to="/free-consultation">
-                                <Button variant="primary" className="pill-btn large">Book Free Consultation</Button>
-                            </Link>
-                            <Link to="/case-studies">
-                                <Button variant="secondary" className="pill-btn large">Explore Case Studies</Button>
-                            </Link>
+                            <Button variant="primary" className="pill-btn large" to="/free-consultation">Book Free Consultation</Button>
+                            <Button variant="secondary" className="pill-btn large" to="/case-studies">Explore Case Studies</Button>
                         </div>
                     </div>
                     <div className="hero-visual">
@@ -56,21 +52,156 @@ const AboutPage = () => {
                 </motion.div>
             </section>
 
-            {/* 2. STORY SECTION */}
-            <section className="story-section container">
-                <div className="story-grid">
-                    <Card className="story-card">
-                        <h2 className="section-title">Our Journey</h2>
-                        <p className="body-l">
-                            Founded by a team of passionate strategists, designers, and technologists, LeadCore has helped B2B businesses achieve measurable growth.
-                        </p>
-                        <p className="body-m mt-24">
-                            We believe in building relationships, not just pipelines. Our work is driven by strategy, data, and creativity to ensure every conversation matters.
-                        </p>
-                    </Card>
-                    <div className="story-visual-placeholder">
-                        <div className="abstract-line"></div>
-                        <div className="abstract-dots"></div>
+            {/* 2. OUR JOURNEY TIMELINE */}
+            <section className="journey-section container">
+                <div className="section-header centered">
+                    <motion.h2
+                        className="section-title"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        Our Journey
+                    </motion.h2>
+                    <motion.p
+                        className="body-l"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                    >
+                        Founded by a team of passionate strategists, designers, and technologists, LeadCore has helped B2B businesses achieve measurable growth.
+                    </motion.p>
+                    <motion.p
+                        className="body-m mt-16"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                    >
+                        We believe in building relationships, not just pipelines. Our work is driven by strategy, data, and creativity to ensure every conversation matters.
+                    </motion.p>
+                </div>
+
+                <div className="timeline-container">
+                    {/* Timeline Line */}
+                    <motion.div
+                        className="timeline-line"
+                        initial={{ scaleY: 0 }}
+                        whileInView={{ scaleY: 1 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 1.2, ease: "easeOut" }}
+                    />
+
+                    {/* Timeline Items */}
+                    <div className="timeline-items">
+                        {/* 2019 - Foundation */}
+                        <motion.div
+                            className="timeline-item timeline-item-left"
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, amount: 0.5 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                        >
+                            <Card className="timeline-card">
+                                <div className="timeline-year">2019</div>
+                                <h4 className="timeline-title">The Beginning</h4>
+                                <p className="timeline-desc">
+                                    LeadCore was founded with a mission to revolutionize B2B lead generation through data-driven strategies and personalized outreach.
+                                </p>
+                            </Card>
+                            <div className="timeline-dot" />
+                        </motion.div>
+
+                        {/* 2020 - First Clients */}
+                        <motion.div
+                            className="timeline-item timeline-item-right"
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, amount: 0.5 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                        >
+                            <div className="timeline-dot" />
+                            <Card className="timeline-card">
+                                <div className="timeline-year">2020</div>
+                                <h4 className="timeline-title">First Success Stories</h4>
+                                <p className="timeline-desc">
+                                    Helped our first 10 clients generate over 50,000 qualified leads, establishing our proven methodology for B2B growth.
+                                </p>
+                            </Card>
+                        </motion.div>
+
+                        {/* 2021 - Expansion */}
+                        <motion.div
+                            className="timeline-item timeline-item-left"
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, amount: 0.5 }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                        >
+                            <Card className="timeline-card">
+                                <div className="timeline-year">2021</div>
+                                <h4 className="timeline-title">Scaling Up</h4>
+                                <p className="timeline-desc">
+                                    Expanded our services to include LinkedIn automation, cold email campaigns, and comprehensive SEO strategies.
+                                </p>
+                            </Card>
+                            <div className="timeline-dot" />
+                        </motion.div>
+
+                        {/* 2022 - Innovation */}
+                        <motion.div
+                            className="timeline-item timeline-item-right"
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, amount: 0.5 }}
+                            transition={{ duration: 0.6, delay: 0.5 }}
+                        >
+                            <div className="timeline-dot" />
+                            <Card className="timeline-card">
+                                <div className="timeline-year">2022</div>
+                                <h4 className="timeline-title">AI-Powered Innovation</h4>
+                                <p className="timeline-desc">
+                                    Integrated AI and machine learning to optimize targeting, personalization, and conversion rates across all campaigns.
+                                </p>
+                            </Card>
+                        </motion.div>
+
+                        {/* 2023 - Milestones */}
+                        <motion.div
+                            className="timeline-item timeline-item-left"
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, amount: 0.5 }}
+                            transition={{ duration: 0.6, delay: 0.6 }}
+                        >
+                            <Card className="timeline-card">
+                                <div className="timeline-year">2023</div>
+                                <h4 className="timeline-title">Major Milestones</h4>
+                                <p className="timeline-desc">
+                                    Generated 500K+ leads for 50+ B2B clients, influencing over $5M in revenue and achieving industry-leading response rates.
+                                </p>
+                            </Card>
+                            <div className="timeline-dot" />
+                        </motion.div>
+
+                        {/* 2024 - Present */}
+                        <motion.div
+                            className="timeline-item timeline-item-right"
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, amount: 0.5 }}
+                            transition={{ duration: 0.6, delay: 0.7 }}
+                        >
+                            <div className="timeline-dot timeline-dot-active" />
+                            <Card className="timeline-card timeline-card-active">
+                                <div className="timeline-year">2024 - Present</div>
+                                <h4 className="timeline-title">Building the Future</h4>
+                                <p className="timeline-desc">
+                                    Continuing to innovate with cutting-edge strategies, expanding our team, and helping more businesses achieve predictable, sustainable growth.
+                                </p>
+                            </Card>
+                        </motion.div>
                     </div>
                 </div>
             </section>
@@ -120,9 +251,7 @@ const AboutPage = () => {
                 <div className="final-cta-container dark-premium">
                     <h2 className="display-h2 white">Ready to Partner with Us?</h2>
                     <p className="body-l text-muted-white">Book a free consultation and discover how we can help your business grow.</p>
-                    <Link to="/free-consultation">
-                        <Button variant="primary" className="pill-btn large max-emphasis">Book Free Consultation</Button>
-                    </Link>
+                    <Button variant="primary" className="pill-btn large max-emphasis" to="/free-consultation">Book Free Consultation</Button>
                 </div>
             </section>
         </div>

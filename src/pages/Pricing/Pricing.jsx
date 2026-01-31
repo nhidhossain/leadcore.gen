@@ -108,7 +108,7 @@ const Pricing = () => {
                                     ))}
                                 </ul>
                                 <div className="tier-cta">
-                                    <Button variant={tier.highlight ? 'primary' : 'secondary'} className="w-100 pill-btn">
+                                    <Button variant={tier.highlight ? 'primary' : 'secondary'} className="w-100 pill-btn" to={tier.link}>
                                         {tier.cta}
                                     </Button>
                                 </div>
@@ -184,15 +184,14 @@ const Pricing = () => {
                                 <AnimatePresence>
                                     {activeFaq === index && (
                                         <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: 'auto', opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.3, ease: 'easeInOut' }}
-                                            style={{ overflow: 'hidden' }}
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            transition={{ duration: 0.3 }}
                                         >
-                                            <p style={{ paddingBottom: '24px', color: 'var(--neutral-gray)', lineHeight: '1.6' }}>
-                                                {item.a}
-                                            </p>
+                                            <div className="faq-answer">
+                                                <p style={{ margin: 0, color: 'var(--neutral-gray)', lineHeight: '1.6' }}>{item.a}</p>
+                                            </div>
                                         </motion.div>
                                     )}
                                 </AnimatePresence>
@@ -208,7 +207,7 @@ const Pricing = () => {
                     <div className="cta-content">
                         <h2 className="display-h2">Ready to Take Your Lead Generation <br /> to the Next Level?</h2>
                         <p className="body-l">Book a free consultation and find the right plan for your business.</p>
-                        <Button variant="primary" className="cta-btn-large radius-18">Book Free Consultation</Button>
+                        <Button variant="primary" className="cta-btn-large radius-18" to="/free-consultation">Book Free Consultation</Button>
                     </div>
                 </div>
             </section>

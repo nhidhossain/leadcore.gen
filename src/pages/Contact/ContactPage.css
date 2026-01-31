@@ -175,7 +175,7 @@ justify-content: center;
 .submit-btn {
     padding: 18px !important;
     font-size: 16px !important;
-    border-radius: 16px !important;
+    /* Using base Button.css rounded style */
 }
 
 .ml-8 {
@@ -267,7 +267,7 @@ a.alt-val:hover {
 .max-emphasis {
     padding: 20px 48px !important;
     font-size: 17px !important;
-    border-radius: 18px !important;
+    /* Using base Button.css rounded style */
 }
 
 /* THANK YOU */

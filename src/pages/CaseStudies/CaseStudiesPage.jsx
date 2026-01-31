@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Search, Filter, ArrowRight, Zap, TrendingUp, Users, Target } from 'lucide-react';
 import Button from '../../components/common/Button';
 import Card from '../../components/common/Card';
+import Dropdown from '../../components/common/Dropdown';
+import { caseStudyService } from '../../services/mock-cms.service';
 import './CaseStudiesPage.css';
 
 const CaseStudiesPage = () => {
@@ -11,60 +14,57 @@ const CaseStudiesPage = () => {
     const [selectedIndustry, setSelectedIndustry] = useState('All');
     const [selectedResult, setSelectedResult] = useState('All');
     const [searchQuery, setSearchQuery] = useState('');
+    const [caseStudies, setCaseStudies] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    const filters = [
-        { label: 'Service Type', state: selectedService, setState: setSelectedService, options: ['All', 'B2B Lead List', 'LinkedIn Lead Generation', 'Cold Email', 'SEO'] },
-        { label: 'Industry', state: selectedIndustry, setState: setSelectedIndustry, options: ['All', 'SaaS', 'Agencies', 'B2B Services', 'E-commerce'] },
-        { label: 'Results', state: selectedResult, setState: setSelectedResult, options: ['All', 'High ROI', 'Lead Volume', 'Pipeline Growth', 'Enterprise Impact'] }
-    ];
+    // Load case studies from CMS
+    useEffect(() => {
+        loadCaseStudies();
+    }, []);
 
-    const caseStudies = [
-        {
-            slug: 'techflow-outreach',
-            title: 'How TechFlow Generated 15+ Monthly Meetings with LinkedIn',
-            subtitle: 'SaaS',
-            metric: '+120%',
-            metricLabel: 'Lead Volume',
-            excerpt: 'Strategic LinkedIn outreach that connected TechFlow directly with Tier-1 decision makers.',
-            image: 'rgba(0, 164, 147, 0.1)', // Placeholder brand color
-            service: 'LinkedIn Lead Generation'
-        },
-        {
-            slug: 'scaleup-email',
-            title: 'Cold Email Strategy for ScaleUp: 45% Open Rates',
-            subtitle: 'Agencies',
-            metric: '45%',
-            metricLabel: 'Open Rate',
-            excerpt: 'High-deliverability campaigns that spark real conversations with enterprise prospects.',
-            image: 'rgba(15, 23, 42, 0.05)',
-            service: 'Cold Email'
-        },
-        {
-            slug: 'b2b-growth-seo',
-            title: 'B2B Leads via SEO: A 250% ROI Success Story',
-            subtitle: 'B2B Services',
-            metric: '250%',
-            metricLabel: 'Avg. ROI',
-            excerpt: 'Building inbound momentum through keyword strategies that convert searchers into leads.',
-            image: 'rgba(0, 164, 147, 0.08)',
-            service: 'SEO'
+    const loadCaseStudies = async () => {
+        try {
+            const data = await caseStudyService.getPublishedCaseStudies();
+            setCaseStudies(data);
+        } catch (error) {
+            console.error('Error loading case studies:', error);
+        } finally {
+            setLoading(false);
         }
-    ];
+    };
+
+    // Extract unique values for filters from loaded data
+    const services = ['All', ...new Set(caseStudies.map(cs => cs.service).filter(Boolean))];
+    const industries = ['All', ...new Set(caseStudies.map(cs => cs.industry).filter(Boolean))];
 
     const filteredCases = caseStudies.filter(item => {
         const matchService = selectedService === 'All' || item.service === selectedService;
-        const matchIndustry = selectedIndustry === 'All' || item.subtitle === selectedIndustry;
+        const matchIndustry = selectedIndustry === 'All' || item.industry === selectedIndustry;
 
-        // Safe search: check title and subtitle (which acts as industry/company context)
         const searchLower = searchQuery.toLowerCase();
-        // Check if title exists, defaulting to empty string if safely needed, though title is required.
-        // We removed item.company check because the data structure uses 'subtitle' or doesn't have a dedicated company field shown. 
-        // If we want to search 'subtitle' as well:
         const matchSearch = (item.title || '').toLowerCase().includes(searchLower) ||
-            ((item.subtitle || '').toLowerCase().includes(searchLower));
+            ((item.subtitle || '').toLowerCase().includes(searchLower) ||
+                (item.clientName || '').toLowerCase().includes(searchLower));
 
         return matchService && matchIndustry && matchSearch;
     });
+
+    const relatedServices = [
+        { name: 'B2B Lead List', icon: <Target size={24} /> },
+        { name: 'LinkedIn Lead Generation', icon: <Users size={24} /> },
+        { name: 'Cold Email Campaigns', icon: <Zap size={24} /> },
+        { name: 'SEO & Content', icon: <TrendingUp size={24} /> }
+    ];
+
+    if (loading) {
+        return (
+            <div className="case-studies-page">
+                <div className="container" style={{ padding: '100px 0', textAlign: 'center' }}>
+                    <p>Loading case studies...</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="case-studies-page">
@@ -87,21 +87,33 @@ const CaseStudiesPage = () => {
             {/* 2. FILTER BAR */}
             <section className="filter-bar-section container">
                 <div className="filter-bar">
-                    {filters.map((filter, idx) => (
-                        <div key={idx} className="filter-dropdown">
-                            <span className="filter-label">{filter.label}</span>
-                            <div className="relative">
-                                <select
-                                    className="filter-select-input"
-                                    value={filter.state}
-                                    onChange={(e) => filter.setState(e.target.value)}
-                                >
-                                    {filter.options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
-                                </select>
-                                <ChevronDown size={14} className="filter-chevron" />
-                            </div>
-                        </div>
-                    ))}
+                    <Dropdown
+                        label="Service Type"
+                        value={selectedService}
+                        onChange={setSelectedService}
+                        options={services.map(s => ({ value: s, label: s }))}
+                        placeholder="All Services"
+                    />
+                    <Dropdown
+                        label="Industry"
+                        value={selectedIndustry}
+                        onChange={setSelectedIndustry}
+                        options={industries.map(i => ({ value: i, label: i }))}
+                        placeholder="All Industries"
+                    />
+                    <Dropdown
+                        label="Results"
+                        value={selectedResult}
+                        onChange={setSelectedResult}
+                        options={[
+                            { value: 'All', label: 'All Results' },
+                            { value: 'High ROI', label: 'High ROI' },
+                            { value: 'Lead Volume', label: 'Lead Volume' },
+                            { value: 'Pipeline Growth', label: 'Pipeline Growth' },
+                            { value: 'Enterprise Impact', label: 'Enterprise Impact' }
+                        ]}
+                        placeholder="All Results"
+                    />
                     <div className="filter-search">
                         <Search size={18} />
                         <input
@@ -116,34 +128,47 @@ const CaseStudiesPage = () => {
 
             {/* 3. CASE GRID */}
             <section className="case-grid-section container">
-                <div className="case-grid">
-                    {filteredCases.map((item, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                        >
-                            <Card className="case-study-card">
-                                <div className="case-thumbnail" style={{ backgroundColor: item.image }}>
-                                    <span className="service-badge">{item.service}</span>
-                                </div>
-                                <div className="case-content">
-                                    <div className="case-metrics">
-                                        <span className="metric-value">{item.metric}</span>
-                                        <span className="metric-label">{item.metricLabel}</span>
+                {filteredCases.length === 0 ? (
+                    <div style={{ textAlign: 'center', padding: '60px 20px' }}>
+                        <h3>No case studies found</h3>
+                        <p style={{ color: 'var(--text-secondary)', marginTop: '12px' }}>
+                            {caseStudies.length === 0
+                                ? 'Case studies will appear here once they are published.'
+                                : 'Try adjusting your filters or search query.'}
+                        </p>
+                    </div>
+                ) : (
+                    <div className="case-grid">
+                        {filteredCases.map((item, index) => (
+                            <motion.div
+                                key={item.id || index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                            >
+                                <Card className="case-study-card">
+                                    <div className="case-thumbnail" style={{ backgroundColor: item.heroImage || 'rgba(0, 164, 147, 0.1)' }}>
+                                        <span className="service-badge">{item.service || 'Service'}</span>
                                     </div>
-                                    <h3 className="case-title">{item.title}</h3>
-                                    <p className="case-excerpt">{item.excerpt}</p>
-                                    <Button variant="secondary" className="pill-btn w-100 mt-auto">
-                                        View Case Study <ArrowRight size={16} />
-                                    </Button>
-                                </div>
-                            </Card>
-                        </motion.div>
-                    ))}
-                </div>
+                                    <div className="case-content">
+                                        {item.metrics && item.metrics.length > 0 && (
+                                            <div className="case-metrics">
+                                                <span className="metric-value">{item.metrics[0].value}</span>
+                                                <span className="metric-label">{item.metrics[0].label}</span>
+                                            </div>
+                                        )}
+                                        <h3 className="case-title">{item.title}</h3>
+                                        <p className="case-excerpt">{item.subtitle || item.excerpt || 'Case study details'}</p>
+                                        <Button variant="secondary" className="pill-btn w-100 mt-auto" to={`/case-studies/${item.slug}`}>
+                                            View Case Study <ArrowRight size={16} />
+                                        </Button>
+                                    </div>
+                                </Card>
+                            </motion.div>
+                        ))}
+                    </div>
+                )}
             </section>
 
             {/* 4. RELATED SERVICES (Horizontal Scroll) */}
@@ -168,7 +193,7 @@ const CaseStudiesPage = () => {
                     <div className="cta-content">
                         <h2 className="display-h2">Ready to See Similar Results <br /> for Your Business?</h2>
                         <p className="body-l">Book a free consultation and discover how we can deliver measurable growth.</p>
-                        <Button variant="primary" className="cta-btn-large radius-18">Book Free Consultation</Button>
+                        <Button variant="primary" className="cta-btn-large radius-18" to="/free-consultation">Book Free Consultation</Button>
                     </div>
                 </div>
             </section>

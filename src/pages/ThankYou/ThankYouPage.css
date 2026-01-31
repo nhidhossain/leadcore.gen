@@ -155,6 +155,10 @@
     border-radius: 18px !important;
 }
 
+.radius-18 {
+    /* Using base Button.css rounded style */
+}
+
 @media (max-width: 1024px) {
     .next-steps-grid {
         grid-template-columns: repeat(2, 1fr);

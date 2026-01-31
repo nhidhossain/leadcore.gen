@@ -348,47 +348,7 @@
     transform: translateX(4px);
 }
 
-/* 5. NEWSLETTER */
-.newsletter-section {
-    padding-bottom: 96px;
-}
 
-.newsletter-card-gradient {
-    background: linear-gradient(135deg, var(--primary) 0%, #008072 100%);
-    padding: 80px 48px;
-    /** Newsletter is a section essentially, so large padding ok? Or should be 32px? CTA cards usually need more. I will leave generous padding for internal CTA */
-    border-radius: 28px;
-    text-align: center;
-    color: white;
-}
-
-.newsletter-card-gradient .section-title.white {
-    color: white;
-    margin-bottom: 16px;
-}
-
-.text-muted-white {
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 40px;
-}
-
-.newsletter-input {
-    flex: 1;
-    background: none;
-    border: none;
-    padding: 0 24px;
-    color: white;
-    outline: none;
-    font-family: inherit;
-}
-
-.newsletter-input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.subscribe-btn {
-    padding: 12px 32px !important;
-}
 
 /* 6. FINAL CTA */
 .blog-final-cta {
@@ -406,7 +366,7 @@
 .max-emphasis {
     padding: 20px 48px !important;
     font-size: 17px !important;
-    border-radius: 18px !important;
+    /* Using base Button.css rounded style */
 }
 
 @media (max-width: 1024px) {

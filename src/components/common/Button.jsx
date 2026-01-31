@@ -1,10 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Button.css';
 
-const Button = ({ children, variant = 'primary', onClick, className = '', ...props }) => {
+const Button = ({ children, variant = 'primary', onClick, className = '', to, ...props }) => {
+    const classes = `btn btn-${variant} ${className}`;
+
+    if (to) {
+        return (
+            <Link to={to} className={classes} {...props}>
+                {children}
+            </Link>
+        );
+    }
+
     return (
         <button
-            className={`btn btn-${variant} ${className}`}
+            className={classes}
             onClick={onClick}
             {...props}
         >

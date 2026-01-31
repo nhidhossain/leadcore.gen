@@ -134,6 +134,10 @@
     border-radius: 18px !important;
 }
 
+.radius-18 {
+    /* Using base Button.css rounded style */
+}
+
 @media (max-width: 768px) {
     .legal-card {
         padding: 40px 24px;

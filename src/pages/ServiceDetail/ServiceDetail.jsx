@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Zap, Target, Lock, BarChart3, X, Check, AlertTriangle,
-    ChevronDown, ArrowRight, MessageSquare, Database, Layout, Settings
+    ChevronDown, ArrowRight, MessageSquare, Database, Layout, Settings, TrendingUp
 } from 'lucide-react';
 import { servicesData } from '../../data/serviceData';
 import Button from '../../components/common/Button';
@@ -18,7 +18,9 @@ const IconMap = {
     'database': <Database size={20} />,
     'linkedin': <Layout size={20} />,
     'mail': <MessageSquare size={20} />,
-    'settings': <Settings size={20} />
+    'settings': <Settings size={20} />,
+    'check': <Check size={20} />,
+    'trending': <TrendingUp size={20} />
 };
 
 const ServiceDetail = () => {
@@ -59,8 +61,12 @@ const ServiceDetail = () => {
                         </div>
 
                         <div className="hero-actions">
-                            <Button variant="primary" className="pill-btn">{service.hero.primaryCTA}</Button>
-                            <Button variant="secondary" className="pill-btn">{service.hero.secondaryCTA}</Button>
+                            <Button variant="primary" className="pill-btn large" to="/free-consultation">
+                                {service.hero.primaryCTA}
+                            </Button>
+                            <Button variant="secondary" className="pill-btn large" to="/case-studies">
+                                {service.hero.secondaryCTA}
+                            </Button>
                         </div>
                     </div>
                     <div className="hero-bg-accent"></div>
@@ -176,10 +182,14 @@ const ServiceDetail = () => {
                         <motion.div
                             key={i}
                             className="timeline-item"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
+                            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{
+                                delay: i * 0.1,
+                                duration: 0.8,
+                                ease: [0.16, 1, 0.3, 1] // Custom quintic ease-out
+                            }}
                         >
                             <div className="timeline-node">{p.step}</div>
                             <div className="timeline-content">
@@ -190,7 +200,6 @@ const ServiceDetail = () => {
                                     <span><strong>Outcome:</strong> {p.outcome}</span>
                                 </div>
                             </div>
-                            {i < service.process.length - 1 && <div className="timeline-line"></div>}
                         </motion.div>
                     ))}
                 </div>
@@ -236,64 +245,6 @@ const ServiceDetail = () => {
                 </motion.div>
             </section>
 
-            {/* 8. FAQs */}
-            <section className="faq-section container">
-                <motion.div
-                    className="section-header"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >
-                    <h2 className="section-title">Sales Objection Killers</h2>
-                </motion.div>
-                <div className="faq-list">
-                    {service.faqs.map((faq, i) => (
-                        <motion.div
-                            key={i}
-                            className={`faq-item ${activeFaq === i ? 'active' : ''}`}
-                            onClick={() => setActiveFaq(activeFaq === i ? null : i)}
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.05 }}
-                        >
-                            <div className="faq-question">
-                                <span>{faq.q}</span>
-                                <ChevronDown size={20} className={`chevron ${activeFaq === i ? 'rotate' : ''}`} />
-                            </div>
-                            <AnimatePresence>
-                                {activeFaq === i && (
-                                    <motion.div
-                                        className="faq-answer"
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: 'auto', opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.3 }}
-                                    >
-                                        <p>{faq.a}</p>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </motion.div>
-                    ))}
-                </div>
-            </section>
-
-            {/* 9. STRONG CTA */}
-            <section className="service-final-cta container">
-                <motion.div
-                    className="final-cta-card"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >
-                    <h2>Let’s see if {service.name} <br /> can work for your business</h2>
-                    <div className="cta-buttons">
-                        <Button variant="primary" className="pill-btn large">Book Free Strategy Call</Button>
-                        <Button variant="outline" className="pill-btn large">Free Audit</Button>
-                    </div>
-                </motion.div>
-            </section>
         </div>
     );
 };

@@ -1,0 +1,141 @@
+.pricing-management {
+    max-width: 100%;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.pricing-card {
+    padding: 24px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+}
+
+.pricing-card.highlighted {
+    border: 2px solid var(--primary);
+    box-shadow: 0 8px 24px rgba(0, 164, 147, 0.15);
+}
+
+.pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.plan-header {
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.plan-header h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 12px 0;
+}
+
+.plan-price {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.plan-billing {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.plan-features {
+    margin-bottom: 20px;
+}
+
+.feature-item {
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.plan-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.plan-meta span {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: var(--bg-primary);
+    color: var(--text-secondary);
+}
+
+.visibility-badge.visible {
+    background: #d4edda;
+    color: #155724;
+}
+
+.visibility-badge.hidden {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.highlighted-badge {
+    background: var(--primary);
+    color: white !important;
+}
+
+.plan-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+/* Pricing Form */
+.pricing-form {
+    padding: 32px;
+    margin-bottom: 24px;
+}
+
+.pricing-form h2 {
+    margin: 0 0 24px 0;
+    color: var(--text-primary);
+}
+
+.feature-input-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.feature-input-row input {
+    flex: 1;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+    cursor: pointer;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 24px;
+}

@@ -1,0 +1,273 @@
+/* ============================================
+   PREMIUM GLOBAL DROPDOWN COMPONENT
+   Enterprise-grade dropdown matching Notion/Linear/Stripe
+   ============================================ */
+
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-full-width {
+    width: 100%;
+}
+
+/* LABEL */
+.dropdown-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--neutral-gray);
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+/* ============================================
+   DROPDOWN TRIGGER (CLOSED STATE)
+   ============================================ */
+.dropdown-trigger {
+    width: 100%;
+    height: 52px;
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 14px;
+    padding: 12px 16px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    color: #0F172A;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    transition: all 0.2s ease;
+    outline: none;
+    text-align: left;
+}
+
+.dropdown-trigger-text {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropdown-placeholder {
+    color: #94A3B8;
+}
+
+/* Chevron Icon */
+.dropdown-chevron {
+    flex-shrink: 0;
+    color: #64748B;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* HOVER STATE */
+.dropdown-trigger:hover:not(.dropdown-trigger-disabled) {
+    border-color: var(--primary);
+}
+
+.dropdown-trigger:hover:not(.dropdown-trigger-disabled) .dropdown-chevron {
+    color: var(--primary);
+}
+
+/* FOCUS / ACTIVE STATE */
+.dropdown-trigger:focus,
+.dropdown-trigger-open {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(0, 164, 147, 0.15);
+}
+
+.dropdown-trigger-open .dropdown-chevron,
+.dropdown-trigger:focus .dropdown-chevron {
+    transform: rotate(180deg);
+    color: var(--primary);
+}
+
+/* DISABLED STATE */
+.dropdown-trigger-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #F8FAFC;
+}
+
+/* ============================================
+   DROPDOWN MENU (OPEN STATE)
+   ============================================ */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    /* 6px gap from trigger */
+    left: 0;
+    right: 0;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+    padding: 8px;
+    max-height: 320px;
+    /* Approx 6-7 items */
+    overflow-y: auto;
+    z-index: 1000;
+
+    /* Smooth animations */
+    animation: dropdownSlideIn 0.2s ease-out;
+    transform-origin: top center;
+}
+
+/* Close animation */
+.dropdown-menu.closing {
+    animation: dropdownSlideOut 0.15s ease-in forwards;
+}
+
+@keyframes dropdownSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes dropdownSlideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+}
+
+/* Custom scrollbar */
+.dropdown-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 10px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+/* ============================================
+   DROPDOWN ITEMS
+   ============================================ */
+.dropdown-item {
+    height: 44px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #0F172A;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.dropdown-item:last-child {
+    margin-bottom: 0;
+}
+
+/* HOVER STATE */
+.dropdown-item:hover,
+.dropdown-item-focused {
+    background: rgba(0, 164, 147, 0.08);
+    color: #0F172A;
+}
+
+/* SELECTED STATE */
+.dropdown-item-selected {
+    background: var(--primary);
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.dropdown-item-selected:hover {
+    background: var(--primary);
+    opacity: 0.95;
+}
+
+/* Empty state */
+.dropdown-empty {
+    padding: 20px 14px;
+    text-align: center;
+    color: #94A3B8;
+    font-size: 14px;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .dropdown-container {
+        width: 100%;
+    }
+
+    .dropdown-trigger {
+        height: 48px;
+        /* Larger tap target */
+        font-size: 15px;
+    }
+
+    .dropdown-menu {
+        animation-duration: 0.25s;
+        /* Slightly slower on mobile */
+        max-height: 280px;
+        /* Less height on mobile */
+    }
+
+    .dropdown-item {
+        height: 48px;
+        /* Larger tap target */
+        font-size: 16px;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY & FOCUS
+   ============================================ */
+.dropdown-trigger:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 164, 147, 0.15);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .dropdown-trigger {
+        border-width: 2px;
+    }
+
+    .dropdown-trigger:focus,
+    .dropdown-trigger-open {
+        border-width: 3px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .dropdown-menu {
+        animation: none;
+    }
+
+    .dropdown-chevron,
+    .dropdown-item {
+        transition: none;
+    }
+}

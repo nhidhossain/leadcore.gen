@@ -8,7 +8,7 @@
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1fr;
     gap: 64px;
-    margin-bottom: 80px;
+    margin-bottom: 64px;
 }
 
 .footer-brand .logo {
@@ -23,8 +23,10 @@
 }
 
 .footer-heading {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     margin-bottom: 24px;
     color: var(--neutral-black);
 }
@@ -40,15 +42,19 @@
 .footer-links a {
     font-size: 14px;
     color: var(--neutral-gray);
+    transition: var(--transition-fast);
 }
 
 .footer-links a:hover {
     color: var(--primary);
+    transform: translateX(4px);
+    display: inline-block;
 }
 
+
+
 .footer-bottom {
-    padding-top: 40px;
-    border-top: 1px solid var(--neutral-light-gray);
+    padding-bottom: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -56,15 +62,29 @@
     color: var(--neutral-gray);
 }
 
-.footer-legal {
-    display: flex;
-    gap: 24px;
+@media (max-width: 1024px) {
+    .newsletter-bar-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 32px;
+    }
+
+    .newsletter-bar-form {
+        width: 100%;
+        max-width: 500px;
+    }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
     .footer-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
+        gap: 48px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
     }
 }
 
@@ -72,34 +92,17 @@
     .footer-grid {
         grid-template-columns: 1fr;
     }
-}
 
-/* Newsletter */
-.newsletter-column {
-    min-width: 280px;
-}
+    .newsletter-bar-form {
+        flex-direction: column;
+    }
 
-.newsletter-form {
-    display: flex;
-    gap: 8px;
-    margin-top: 16px;
-}
+    .newsletter-bar-title {
+        font-size: 20px;
+    }
 
-.newsletter-input {
-    flex: 1;
-    height: 48px;
-    border-radius: 12px;
-    border: 1px solid var(--neutral-light-gray);
-    padding: 0 16px;
-    font-size: 14px;
-}
-
-.newsletter-btn {
-    width: 48px;
-    height: 48px;
-    padding: 0 !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
+    .newsletter-bar-input,
+    .newsletter-bar-btn {
+        width: 100%;
+    }
 }

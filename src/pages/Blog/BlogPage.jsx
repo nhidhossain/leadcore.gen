@@ -60,12 +60,8 @@ const BlogPage = () => {
                             Learn from our experts how to generate predictable leads, improve conversions, and scale your business.
                         </p>
                         <div className="hero-actions">
-                            <a href="#featured-insights">
-                                <Button variant="primary" className="pill-btn large">Browse Articles</Button>
-                            </a>
-                            <Link to="/free-consultation">
-                                <Button variant="secondary" className="pill-btn large">Book Free Consultation</Button>
-                            </Link>
+                            <Button variant="primary" className="pill-btn large" to="#featured-insights">Browse Articles</Button>
+                            <Button variant="secondary" className="pill-btn large" to="/free-consultation">Book Free Consultation</Button>
                         </div>
                     </div>
                     <div className="hero-visual">
@@ -103,7 +99,7 @@ const BlogPage = () => {
                                     <span className="post-cat-small">{post.category}</span>
                                     <h3 className="post-title-large">{post.title}</h3>
                                     <p className="post-excerpt-large">{post.excerpt}</p>
-                                    <Button variant="secondary" className="pill-btn mt-auto">Read More</Button>
+                                    <Button variant="secondary" className="pill-btn mt-auto" to={`/blog/${post.slug}`}>Read More</Button>
                                 </div>
                             </Card>
                         </motion.div>
@@ -148,26 +144,14 @@ const BlogPage = () => {
                 </div>
             </section>
 
-            {/* 5. NEWSLETTER CTA */}
-            <section className="newsletter-section container">
-                <div className="newsletter-card-gradient">
-                    <h2 className="section-title white">Subscribe for Exclusive Insights</h2>
-                    <p className="body-l text-muted-white">Join our newsletter and get strategies, templates, and guides straight to your inbox.</p>
-                    <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
-                        <input type="email" placeholder="Enter your email address" required className="newsletter-input" />
-                        <Button variant="primary" className="pill-btn large subscribe-btn">Subscribe</Button>
-                    </form>
-                </div>
-            </section>
+
 
             {/* 6. FINAL CTA */}
             <section className="blog-final-cta container">
                 <div className="final-cta-container dark-premium">
                     <h2 className="display-h2 white">Ready to Accelerate Your <br /> Lead Generation?</h2>
                     <p className="body-l text-muted-white">Book a free consultation and get personalized strategies for your business.</p>
-                    <Link to="/free-consultation">
-                        <Button variant="primary" className="pill-btn large max-emphasis">Book Free Consultation</Button>
-                    </Link>
+                    <Button variant="primary" className="pill-btn large max-emphasis" to="/free-consultation">Book Free Consultation</Button>
                 </div>
             </section>
         </div>

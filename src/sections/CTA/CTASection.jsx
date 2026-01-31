@@ -12,7 +12,7 @@ const CTASection = () => {
                         Join 50+ B2B companies using LeadCore to scale their outreach and book more meetings.
                     </p>
                     <div className="cta-actions">
-                        <Button variant="primary" className="cta-btn-large">
+                        <Button variant="primary" className="cta-btn-large" to="/free-consultation">
                             Book Your Free Consultation
                         </Button>
                         <p className="cta-note">No commitment required. 30-min strategy session.</p>

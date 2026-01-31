@@ -8,8 +8,8 @@
     gap: 8px;
 
     /* Base Sizing & Shape */
-    border-radius: var(--radius-md);
-    /* 16px */
+    border-radius: 999px;
+    /* Fully rounded pill shape */
     padding: 14px 24px;
 
     /* Typography */
@@ -94,5 +94,5 @@
 .btn-lg {
     padding: 18px 32px;
     font-size: var(--text-body-lg);
-    border-radius: var(--radius-lg);
+    border-radius: 999px;
 }

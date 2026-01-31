@@ -1,0 +1,54 @@
+.case-study-editor {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.metric-row,
+.service-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.metric-row input {
+    flex: 1;
+}
+
+.service-row input {
+    flex: 1;
+}
+
+.remove-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #dc3545;
+    background: white;
+    color: #dc3545;
+    border-radius: 6px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.remove-btn:hover {
+    background: #dc3545;
+    color: white;
+}
+
+.add-btn {
+    padding: 10px 16px;
+    background: transparent;
+    border: 1px dashed var(--border-color);
+    border-radius: 6px;
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 8px;
+}
+
+.add-btn:hover {
+    border-color: var(--primary);
+    background: rgba(0, 164, 147, 0.05);
+}

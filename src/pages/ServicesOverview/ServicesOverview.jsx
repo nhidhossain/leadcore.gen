@@ -77,8 +77,8 @@ const ServicesOverview = () => {
                             Every service is engineered to attract the right prospects, start meaningful conversations, and convert attention into revenue.
                         </p>
                         <div className="hero-actions">
-                            <Button variant="primary">Book Free Consultation</Button>
-                            <Button variant="secondary">View Case Studies</Button>
+                            <Button variant="primary" to="/free-consultation">Book Free Consultation</Button>
+                            <Button variant="secondary" to="/case-studies">View Case Studies</Button>
                         </div>
                     </div>
                     <div className="hero-visual">
@@ -133,11 +133,9 @@ const ServicesOverview = () => {
                                 </ul>
 
                                 <div className="service-cta-wrapper">
-                                    <Link to={service.link}>
-                                        <Button variant="secondary" className="w-100">
-                                            {service.cta}
-                                        </Button>
-                                    </Link>
+                                    <Button variant="secondary" className="w-100" to={service.link}>
+                                        {service.cta}
+                                    </Button>
                                 </div>
                             </Card>
                         </motion.div>
@@ -152,7 +150,7 @@ const ServicesOverview = () => {
                         <h3>Not Sure Which Service Fits Your Business?</h3>
                         <p>Talk to a strategist and get a clear recommendation based on your goals, market, and growth stage.</p>
                     </div>
-                    <Button variant="secondary" className="radius-14">Get Expert Guidance</Button>
+                    <Button variant="secondary" className="radius-14" to="/free-consultation">Get Expert Guidance</Button>
                 </div>
             </section>
 
@@ -174,7 +172,7 @@ const ServicesOverview = () => {
                     <div className="cta-content">
                         <h2 className="display-h2">Ready to Turn Outreach Into Revenue?</h2>
                         <p className="body-l">Book a free strategy call and see how we can build a predictable growth system for your business.</p>
-                        <Button variant="primary" className="cta-btn-large radius-18">Book Free Strategy Call</Button>
+                        <Button variant="primary" className="cta-btn-large radius-18" to="/free-consultation">Book Free Strategy Call</Button>
                     </div>
                 </div>
             </section>

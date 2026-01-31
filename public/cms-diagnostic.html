@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS LocalStorage Tester</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    h1 { color: #00a493; margin-top: 0; }
+    h2 { color: #333; border-bottom: 2px solid #00a493; padding-bottom: 8px; }
+    button {
+      background: #00a493;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      margin: 8px 8px 8px 0;
+    }
+    button:hover { background: #008c7e; }
+    button.danger { background: #dc3545; }
+    button.danger:hover { background: #c82333; }
+    .output {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      padding: 15px;
+      border-radius: 6px;
+      margin: 15px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .success { color: #28a745; font-weight: bold; }
+    .error { color: #dc3545; font-weight: bold; }
+    .info { color: #007bff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🗄️ CMS LocalStorage Diagnostic Tool</h1>
+    <p>This tool helps diagnose issues with the CMS localStorage backend.</p>
+
+    <h2>1. Check LocalStorage Access</h2>
+    <button onclick="testLocalStorage()">Test LocalStorage</button>
+    <div id="lsTest" class="output"></div>
+
+    <h2>2. View CMS Data</h2>
+    <button onclick="viewAllData()">View All CMS Data</button>
+    <button onclick="viewStats()">View Statistics</button>
+    <div id="dataView" class="output"></div>
+
+    <h2>3. Test CRUD Operations</h2>
+    <button onclick="testCreate()">Test Create Blog</button>
+    <button onclick="testRead()">Test Read Blogs</button>
+    <button onclick="testUpdate()">Test Update Blog</button>
+    <button onclick="testDelete()">Test Delete Blog</button>
+    <div id="crudTest" class="output"></div>
+
+    <h2>4. Debug & Reset</h2>
+    <button onclick="reinitialize()">Reinitialize CMS</button>
+    <button class="danger" onclick="clearAllData()">Clear All CMS Data</button>
+    <div id="debugOutput" class="output"></div>
+  </div>
+
+  <script>
+    const PREFIX = 'leadcore_cms_';
+
+    function log(elementId, message, type = 'info') {
+      const el = document.getElementById(elementId);
+      const className = type === 'success' ? 'success' : type === 'error' ? 'error' : 'info';
+      el.innerHTML += `<div class="${className}">${new Date().toLocaleTimeString()}: ${message}</div>`;
+    }
+
+    function testLocalStorage() {
+      const output = document.getElementById('lsTest');
+      output.innerHTML = '';
+      
+      try {
+        const testKey = 'test_key_' + Date.now();
+        const testValue = {data: 'test value', timestamp: Date.now()};
+        
+        // Test write
+        localStorage.setItem(testKey, JSON.stringify(testValue));
+        log('lsTest', '✓ Write to localStorage: SUCCESS', 'success');
+        
+        // Test read
+        const retrieved = JSON.parse(localStorage.getItem(testKey));
+        if (retrieved.data === testValue.data) {
+          log('lsTest', '✓ Read from localStorage: SUCCESS', 'success');
+        } else {
+          log('lsTest', '✗ Read from localStorage: FAILED', 'error');
+        }
+        
+        // Test delete
+        localStorage.removeItem(testKey);
+        log('lsTest', '✓ Delete from localStorage: SUCCESS', 'success');
+        
+        log('lsTest', '<br><b>Result: LocalStorage is working correctly!</b>', 'success');
+      } catch (error) {
+        log('lsTest', '✗ LocalStorage Error: ' + error.message, 'error');
+        log('lsTest', 'Your browser may have localStorage disabled or quota exceeded.', 'error');
+      }
+    }
+
+    function viewAllData() {
+      const output = document.getElementById('dataView');
+      output.innerHTML = '<h3>All CMS Data:</h3>';
+      
+      const collections = ['blogs', 'caseStudies', 'pricingPlans', 'teamMembers', 'contactMethods'];
+      
+      collections.forEach(coll => {
+        const data = localStorage.getItem(PREFIX + coll);
+        if (data) {
+          try {
+            const parsed = JSON.parse(data);
+            output.innerHTML += `<h4>${coll} (${parsed.length} items):</h4>`;
+            output.innerHTML += `<pre>${JSON.stringify(parsed, null, 2)}</pre><hr>`;
+          } catch (e) {
+            output.innerHTML += `<div class="error">${coll}: Parse error - ${e.message}</div>`;
+          }
+        } else {
+          output.innerHTML += `<div class="info">${coll}: No data</div>`;
+        }
+      });
+    }
+
+    function viewStats() {
+      const output = document.getElementById('dataView');
+      output.innerHTML = '<h3>CMS Statistics:</h3>';
+      
+      const collections = ['blogs', 'caseStudies', 'pricingPlans', 'teamMembers', 'contactMethods'];
+      let totalItems = 0;
+      
+      collections.forEach(coll => {
+        const data = localStorage.getItem(PREFIX + coll);
+        if (data) {
+          try {
+            const parsed = JSON.parse(data);
+            totalItems += parsed.length;
+            output.innerHTML += `<div>• ${coll}: <b>${parsed.length}</b> items</div>`;
+          } catch (e) {
+            output.innerHTML += `<div class="error">• ${coll}: Error reading data</div>`;
+          }
+        } else {
+          output.innerHTML += `<div>• ${coll}: <b>0</b> items</div>`;
+        }
+      });
+      
+      output.innerHTML += `<br><div class="success"><b>Total Items: ${totalItems}</b></div>`;
+      
+      const initialized = localStorage.getItem(PREFIX + 'initialized');
+      output.innerHTML += `<div>Initialized: <b>${initialized || 'No'}</b></div>`;
+    }
+
+    function testCreate() {
+      const output = document.getElementById('crudTest');
+      output.innerHTML = '';
+      
+      try {
+        const blogs = JSON.parse(localStorage.getItem(PREFIX + 'blogs') || '[]');
+        const newBlog = {
+          id: Date.now().toString(),
+          title: 'Test Blog ' + Date.now(),
+          slug: 'test-blog-' + Date.now(),
+          content: 'Test content',
+          status: 'draft',
+          createdAt: new Date().toISOString()
+        };
+        
+        blogs.push(newBlog);
+        localStorage.setItem(PREFIX + 'blogs', JSON.stringify(blogs));
+        
+        log('crudTest', '✓ Created blog: ' + newBlog.title, 'success');
+        log('crudTest', 'Blog ID: ' + newBlog.id, 'info');
+        log('crudTest', 'Total blogs: ' + blogs.length, 'info');
+      } catch (error) {
+        log('crudTest', '✗ Create failed: ' + error.message, 'error');
+      }
+    }
+
+    function testRead() {
+      const output = document.getElementById('crudTest');
+      output.innerHTML = '';
+      
+      try {
+        const blogs = JSON.parse(localStorage.getItem(PREFIX + 'blogs') || '[]');
+        log('crudTest', `✓ Read ${blogs.length} blogs from storage`, 'success');
+        
+        blogs.forEach((blog, index) => {
+          log('crudTest', `${index + 1}. ${blog.title} (${blog.status})`, 'info');
+        });
+        
+        if (blogs.length === 0) {
+          log('crudTest', 'No blogs found. Try creating one first.', 'info');
+        }
+      } catch (error) {
+        log('crudTest', '✗ Read failed: ' + error.message, 'error');
+      }
+    }
+
+    function testUpdate() {
+      const output = document.getElementById('crudTest');
+      output.innerHTML = '';
+      
+      try {
+        const blogs = JSON.parse(localStorage.getItem(PREFIX + 'blogs') || '[]');
+        
+        if (blogs.length === 0) {
+          log('crudTest', 'No blogs to update. Create one first.', 'error');
+          return;
+        }
+        
+        const blog = blogs[0];
+        blog.title = 'Updated: ' + blog.title;
+        blog.updatedAt = new Date().toISOString();
+        
+        localStorage.setItem(PREFIX + 'blogs', JSON.stringify(blogs));
+        
+        log('crudTest', '✓ Updated blog: ' + blog.title, 'success');
+        log('crudTest', 'Updated at: ' + blog.updatedAt, 'info');
+      } catch (error) {
+        log('crudTest', '✗ Update failed: ' + error.message, 'error');
+      }
+    }
+
+    function testDelete() {
+      const output = document.getElementById('crudTest');
+      output.innerHTML = '';
+      
+      try {
+        let blogs = JSON.parse(localStorage.getItem(PREFIX + 'blogs') || '[]');
+        
+        if (blogs.length === 0) {
+          log('crudTest', 'No blogs to delete.', 'error');
+          return;
+        }
+        
+        const deletedBlog = blogs[0];
+        blogs = blogs.slice(1);
+        
+        localStorage.setItem(PREFIX + 'blogs', JSON.stringify(blogs));
+        
+        log('crudTest', '✓ Deleted blog: ' + deletedBlog.title, 'success');
+        log('crudTest', 'Remaining blogs: ' + blogs.length, 'info');
+      } catch (error) {
+        log('crudTest', '✗ Delete failed: ' + error.message, 'error');
+      }
+    }
+
+    function reinitialize() {
+      const output = document.getElementById('debugOutput');
+      output.innerHTML = '';
+      
+      try {
+        // Remove initialized flag
+        localStorage.removeItem(PREFIX + 'initialized');
+        log('debugOutput', '✓ Removed initialization flag', 'success');
+        
+        // Initialize with empty arrays if not exists
+        const collections = ['blogs', 'caseStudies', 'pricingPlans', 'teamMembers', 'contactMethods'];
+        collections.forEach(coll => {
+          if (!localStorage.getItem(PREFIX + coll)) {
+            localStorage.setItem(PREFIX + coll, '[]');
+            log('debugOutput', `✓ Initialized ${coll} collection`, 'success');
+          }
+        });
+        
+        localStorage.setItem(PREFIX + 'initialized', 'true');
+        log('debugOutput', '<br><b>✓ CMS Reinitialized successfully!</b>', 'success');
+        log('debugOutput', 'Refresh your admin panel to see changes.', 'info');
+      } catch (error) {
+        log('debugOutput', '✗ Reinitialize failed: ' + error.message, 'error');
+      }
+    }
+
+    function clearAllData() {
+      if (!confirm('Are you sure you want to delete ALL CMS data? This cannot be undone!')) {
+        return;
+      }
+      
+      const output = document.getElementById('debugOutput');
+      output.innerHTML = '';
+      
+      try {
+        const collections = ['blogs', 'caseStudies', 'pricingPlans', 'teamMembers', 'contactMethods', 'initialized', 'auth_user'];
+        
+        collections.forEach(coll => {
+          localStorage.removeItem(PREFIX + coll);
+          log('debugOutput', `✓ Cleared ${coll}`, 'success');
+        });
+        
+        log('debugOutput', '<br><b>✓ All CMS data cleared!</b>', 'success');
+        log('debugOutput', 'Refresh your admin panel. It will reinitialize automatically.', 'info');
+      } catch (error) {
+        log('debugOutput', '✗ Clear failed: ' + error.message, 'error');
+      }
+    }
+
+    // Auto-run localStorage test on load
+    window.onload = () => {
+      testLocalStorage();
+      viewStats();
+    };
+  </script>
+</body>
+</html>

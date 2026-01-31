@@ -1,0 +1,247 @@
+.case-study-detail-page {
+    padding-top: 80px;
+}
+
+.loading,
+.not-found {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+}
+
+.not-found h1 {
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+.not-found p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.not-found a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Hero Section */
+.case-study-hero {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 80px 0;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 32px;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--primary);
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.service-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--primary);
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+}
+
+.metrics-highlight {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.metric-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.metric-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Content Sections */
+.case-study-content {
+    padding: 80px 0;
+}
+
+.content-block {
+    margin-bottom: 64px;
+}
+
+.content-block:last-child {
+    margin-bottom: 0;
+}
+
+.content-block h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+}
+
+.content-block p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.results-block {
+    background: linear-gradient(135deg, #f0f9f8 0%, #e6f4f3 100%);
+    padding: 48px;
+    border-radius: 16px;
+}
+
+.services-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 16px;
+}
+
+.services-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+.services-list li svg {
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+/* CTA Section */
+.case-study-cta {
+    background: var(--primary);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+}
+
+.cta-content p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 32px;
+}
+
+.cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-actions .btn {
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.cta-actions .btn-primary {
+    background: white;
+    color: var(--primary);
+}
+
+.cta-actions .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.cta-actions .btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.cta-actions .btn-secondary:hover {
+    background: white;
+    color: var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .content-block h2 {
+        font-size: 24px;
+    }
+
+    .cta-content h2 {
+        font-size: 28px;
+    }
+
+    .cta-actions {
+        flex-direction: column;
+    }
+
+    .cta-actions .btn {
+        width: 100%;
+    }
+
+    .results-block {
+        padding: 32px 24px;
+    }
+}

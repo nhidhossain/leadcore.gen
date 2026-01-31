@@ -4,6 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { CheckCircle2, Calendar, ArrowRight, TrendingUp, Users, Target, Zap } from 'lucide-react';
 import Button from '../../components/common/Button';
 import Card from '../../components/common/Card';
+import Dropdown from '../../components/common/Dropdown';
 import DatePicker from '../../components/common/DatePicker';
 import './ConsultationPage.css';
 
@@ -102,27 +103,37 @@ const ConsultationPage = () => {
                                     <input type="text" name="company" required placeholder="Acme Inc" onChange={handleChange} />
                                 </div>
                                 <div className="form-group">
-                                    <label>Role / Position</label>
-                                    <select name="role" required onChange={handleChange} defaultValue="">
-                                        <option value="" disabled>Select Role</option>
-                                        <option value="Founder">Founder</option>
-                                        <option value="Marketing Lead">Marketing Lead</option>
-                                        <option value="Sales Lead">Sales Lead</option>
-                                        <option value="Agency">Agency</option>
-                                        <option value="Other">Other</option>
-                                    </select>
+                                    <Dropdown
+                                        label="Role / Position"
+                                        value={formData.role}
+                                        onChange={(value) => setFormData({ ...formData, role: value })}
+                                        options={[
+                                            { value: 'Founder', label: 'Founder' },
+                                            { value: 'Marketing Lead', label: 'Marketing Lead' },
+                                            { value: 'Sales Lead', label: 'Sales Lead' },
+                                            { value: 'Agency', label: 'Agency' },
+                                            { value: 'Other', label: 'Other' }
+                                        ]}
+                                        placeholder="Select Role"
+                                        fullWidth
+                                    />
                                 </div>
                             </div>
 
                             <div className="form-group">
-                                <label>Current Monthly Leads (Optional)</label>
-                                <select name="leadsCount" onChange={handleChange} defaultValue="">
-                                    <option value="" disabled>Select Range</option>
-                                    <option value="0–50">0 – 50</option>
-                                    <option value="50–100">50 – 100</option>
-                                    <option value="100–500">100 – 500</option>
-                                    <option value="500+">500+</option>
-                                </select>
+                                <Dropdown
+                                    label="Current Monthly Leads (Optional)"
+                                    value={formData.leadsCount}
+                                    onChange={(value) => setFormData({ ...formData, leadsCount: value })}
+                                    options={[
+                                        { value: '0–50', label: '0 – 50' },
+                                        { value: '50–100', label: '50 – 100' },
+                                        { value: '100–500', label: '100 – 500' },
+                                        { value: '500+', label: '500+' }
+                                    ]}
+                                    placeholder="Select Range"
+                                    fullWidth
+                                />
                             </div>
 
                             <div className="form-group">

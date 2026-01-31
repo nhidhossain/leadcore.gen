@@ -331,7 +331,7 @@ justify-content: center;
 }
 
 .radius-18 {
-    border-radius: 18px !important;
+    /* Removed border-radius override - using base Button.css rounded style */
 }
 
 .cta-btn-large {

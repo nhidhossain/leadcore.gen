@@ -45,16 +45,9 @@ const Footer = () => {
                         <li><span className="text-muted">Dubai / London</span></li>
                     </ul>
                 </div>
-
-                <div className="footer-links newsletter-column">
-                    <h4 className="footer-heading">Newsletter</h4>
-                    <p className="footer-text">Weekly B2B growth tips.</p>
-                    <div className="newsletter-form">
-                        <input type="email" placeholder="Enter your email..." className="newsletter-input" />
-                        <Button variant="primary" className="newsletter-btn">→</Button>
-                    </div>
-                </div>
             </div>
+
+
 
             <div className="container footer-bottom">
                 <p>&copy; {new Date().getFullYear()} LeadCore Agency. All rights reserved.</p>
