@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+
 import { motion } from 'framer-motion';
 import { Download, ArrowRight, BookOpen, Target, Users, Zap, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom'; // Assuming react-router-dom for Link
@@ -7,7 +8,7 @@ import Card from '../../components/common/Card';
 import './BlogPage.css';
 
 const BlogPage = () => {
-    const [activeCategory, setActiveCategory] = useState('All');
+
 
     const featuredPosts = [
         {

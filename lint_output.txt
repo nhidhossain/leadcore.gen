@@ -1,0 +1,118 @@
+
+> leadcore.gen@0.0.0 lint
+> eslint .
+
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\components\Header\Header.jsx
+  19:11  error  'handleLinkClick' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\components\common\DatePicker.jsx
+  1:27  error  'useEffect' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\components\common\Dropdown.jsx
+  77:25  error    Error: Cannot access variable before it is declared
+
+`handleSelect` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  75 |                     e.preventDefault();
+  76 |                     if (focusedIndex >= 0 && focusedIndex < options.length) {
+> 77 |                         handleSelect(options[focusedIndex].value);
+     |                         ^^^^^^^^^^^^ `handleSelect` accessed before it is declared
+  78 |                     }
+  79 |                     break;
+  80 |                 default:
+
+  113 |     };
+  114 |
+> 115 |     const handleSelect = (optionValue) => {
+      |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 116 |         onChange(optionValue);
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 117 |         setIsOpen(false);
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 118 |         setFocusedIndex(-1);
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 119 |     };
+      | ^^^^^^^ `handleSelect` is declared here
+  120 |
+  121 |     const containerClasses = `dropdown-container ${fullWidth ? 'dropdown-full-width' : ''} ${className}`;
+  122 |     const triggerClasses = `dropdown-trigger ${isOpen ? 'dropdown-trigger-open' : ''} ${disabled ? 'dropdown-trigger-disabled' : ''}`;  react-hooks/immutability
+  89:8   warning  React Hook useEffect has a missing dependency: 'handleSelect'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               react-hooks/exhaustive-deps
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\context\AuthContext.jsx
+   6:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            react-refresh/only-export-components
+  22:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  20 |         // Check for existing session
+  21 |         const currentUser = mockAuth.getCurrentUser();
+> 22 |         setUser(currentUser);
+     |         ^^^^^^^ Avoid calling setState() directly within an effect
+  23 |         setLoading(false);
+  24 |     }, []);
+  25 |  react-hooks/set-state-in-effect
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\About\AboutPage.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\Admin\BlogEditor.jsx
+  36:8  warning  React Hook useEffect has missing dependencies: 'isEditMode' and 'loadBlog'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\Admin\CaseStudyEditor.jsx
+  42:8  warning  React Hook useEffect has missing dependencies: 'isEditMode' and 'loadCaseStudy'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\Blog\BlogPage.jsx
+   2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                      no-unused-vars
+  10:12  error  'activeCategory' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  10:28  error  'setActiveCategory' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\CaseStudies\CaseStudiesPage.jsx
+   3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                    no-unused-vars
+  12:12  error  'activeFilter' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  12:26  error  'setActiveFilter' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\CaseStudies\CaseStudyDetail.jsx
+  14:8  warning  React Hook useEffect has a missing dependency: 'loadCaseStudy'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\Consultation\ConsultationPage.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\Contact\ContactPage.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\Legal\LegalPage.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\Pricing\Pricing.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\ServiceDetail\ServiceDetail.jsx
+   3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                 no-unused-vars
+  29:12  error  'activeFaq' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  29:23  error  'setActiveFaq' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\ServicesOverview\ServicesOverview.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\ThankYou\ThankYouPage.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\sections\CaseStudies\CaseStudies.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\sections\Hero\Hero.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\sections\Process\Process.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\sections\Services\Services.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+Γ£û 29 problems (25 errors, 4 warnings)
+

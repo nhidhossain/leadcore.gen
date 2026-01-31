@@ -33,6 +33,12 @@
     justify-content: center;
 }
 
+.pricing-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .pricing-visual-orb {
     width: 200px;
     height: 200px;

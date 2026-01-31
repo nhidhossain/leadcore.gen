@@ -38,10 +38,8 @@
     color: var(--neutral-gray);
 }
 
-justify-content: center;
-}
-
 .hero-visual {
+
     margin-top: 48px;
     display: flex;
     justify-content: center;
@@ -330,11 +328,8 @@ justify-content: center;
     margin: 0 auto 48px;
 }
 
-.radius-18 {
-    /* Removed border-radius override - using base Button.css rounded style */
-}
-
 .cta-btn-large {
+
     padding: 18px 40px;
     font-size: 16px;
     font-weight: 600;

@@ -1,0 +1,43 @@
+
+> leadcore.gen@0.0.0 lint
+> eslint .
+
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\components\Header\Header.jsx
+  19:11  error  'handleLinkClick' is assigned a value but never used. Allowed unused vars must match /^[a-z]?motion|^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\components\common\DatePicker.jsx
+  1:27  error  'useEffect' is defined but never used. Allowed unused vars must match /^[a-z]?motion|^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\components\common\Dropdown.jsx
+  95:8  warning  React Hook useEffect has a missing dependency: 'handleSelect'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\context\AuthContext.jsx
+   1:17  error  'createContext' is defined but never used. Allowed unused vars must match /^[a-z]?motion|^[A-Z_]/u                              no-unused-vars
+   1:54  error  'useEffect' is defined but never used. Allowed unused vars must match /^[a-z]?motion|^[A-Z_]/u                                  no-unused-vars
+   6:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  16:21  error  'setLoading' is assigned a value but never used. Allowed unused vars must match /^[a-z]?motion|^[A-Z_]/u                        no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\Admin\BlogEditor.jsx
+  36:8  warning  React Hook useEffect has missing dependencies: 'isEditMode' and 'loadBlog'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\Admin\CaseStudyEditor.jsx
+  42:8  warning  React Hook useEffect has missing dependencies: 'isEditMode' and 'loadCaseStudy'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\Blog\BlogPage.jsx
+  10:12  error  'activeCategory' is assigned a value but never used. Allowed unused vars must match /^[a-z]?motion|^[A-Z_]/u     no-unused-vars
+  10:28  error  'setActiveCategory' is assigned a value but never used. Allowed unused vars must match /^[a-z]?motion|^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\CaseStudies\CaseStudiesPage.jsx
+  12:12  error  'activeFilter' is assigned a value but never used. Allowed unused vars must match /^[a-z]?motion|^[A-Z_]/u     no-unused-vars
+  12:26  error  'setActiveFilter' is assigned a value but never used. Allowed unused vars must match /^[a-z]?motion|^[A-Z_]/u  no-unused-vars
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\CaseStudies\CaseStudyDetail.jsx
+  14:8  warning  React Hook useEffect has a missing dependency: 'loadCaseStudy'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+D:\work_for_life_\portfolio_\leadcore.gen\src\pages\ServiceDetail\ServiceDetail.jsx
+  29:12  error  'activeFaq' is assigned a value but never used. Allowed unused vars must match /^[a-z]?motion|^[A-Z_]/u     no-unused-vars
+  29:23  error  'setActiveFaq' is assigned a value but never used. Allowed unused vars must match /^[a-z]?motion|^[A-Z_]/u  no-unused-vars
+
+Γ£û 16 problems (12 errors, 4 warnings)
+

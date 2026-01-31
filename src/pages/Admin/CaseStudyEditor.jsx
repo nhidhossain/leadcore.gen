@@ -35,13 +35,7 @@ const CaseStudyEditor = () => {
     const [saving, setSaving] = useState(false);
     const [slugEdited, setSlugEdited] = useState(false);
 
-    useEffect(() => {
-        if (isEditMode) {
-            loadCaseStudy();
-        }
-    }, [id]);
-
-    const loadCaseStudy = async () => {
+    const loadCaseStudy = React.useCallback(async () => {
         try {
             const cs = await caseStudyService.getCaseStudyById(id);
             if (cs) {
@@ -53,7 +47,14 @@ const CaseStudyEditor = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [id]);
+
+    useEffect(() => {
+        if (isEditMode) {
+            loadCaseStudy();
+        }
+    }, [isEditMode, loadCaseStudy]);
+
 
     const handleTitleChange = (title) => {
         setFormData(prev => ({ ...prev, title }));

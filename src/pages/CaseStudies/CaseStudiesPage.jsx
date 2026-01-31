@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Search, Filter, ArrowRight, Zap, TrendingUp, Users, Target } from 'lucide-react';
@@ -9,7 +10,7 @@ import { caseStudyService } from '../../services/mock-cms.service';
 import './CaseStudiesPage.css';
 
 const CaseStudiesPage = () => {
-    const [activeFilter, setActiveFilter] = useState('All');
+
     const [selectedService, setSelectedService] = useState('All');
     const [selectedIndustry, setSelectedIndustry] = useState('All');
     const [selectedResult, setSelectedResult] = useState('All');

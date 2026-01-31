@@ -1,33 +1,23 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { useState } from 'react';
+
 import { mockAuth } from '../services/mock-cms.service';
-
-const AuthContext = createContext({});
-
-export const useAuth = () => {
-    const context = useContext(AuthContext);
-    if (!context) {
-        throw new Error('useAuth must be used within an AuthProvider');
-    }
-    return context;
-};
+import { AuthContext } from './AuthContextObject';
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState(() => mockAuth.getCurrentUser());
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        // Check for existing session
-        const currentUser = mockAuth.getCurrentUser();
-        setUser(currentUser);
-        setLoading(false);
-    }, []);
+
+
+    // No longer need immediate useEffect for session check as we use lazy initializer
+
 
     const login = async (email, password) => {
         try {
             setError(null);
             const user = await mockAuth.login(email, password);
             setUser(user);
+
             return user;
         } catch (error) {
             setError(error.message);
@@ -39,6 +29,7 @@ export const AuthProvider = ({ children }) => {
         try {
             await mockAuth.logout();
             setUser(null);
+
         } catch (error) {
             setError(error.message);
             throw error;
@@ -53,7 +44,7 @@ export const AuthProvider = ({ children }) => {
 
     const value = {
         user,
-        loading,
+        loading: false,
         error,
         login,
         logout,
@@ -63,3 +54,4 @@ export const AuthProvider = ({ children }) => {
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
+

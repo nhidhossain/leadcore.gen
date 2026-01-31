@@ -29,13 +29,7 @@ const BlogEditor = () => {
     const [saving, setSaving] = useState(false);
     const [slugEdited, setSlugEdited] = useState(false);
 
-    useEffect(() => {
-        if (isEditMode) {
-            loadBlog();
-        }
-    }, [id]);
-
-    const loadBlog = async () => {
+    const loadBlog = React.useCallback(async () => {
         try {
             const blog = await blogService.getBlogById(id);
             if (blog) {
@@ -48,7 +42,14 @@ const BlogEditor = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [id]);
+
+    useEffect(() => {
+        if (isEditMode) {
+            loadBlog();
+        }
+    }, [isEditMode, loadBlog]);
+
 
     const handleTitleChange = (title) => {
         setFormData(prev => ({ ...prev, title }));

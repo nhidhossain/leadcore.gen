@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -26,7 +27,7 @@ const IconMap = {
 const ServiceDetail = () => {
     const { slug } = useParams();
     const service = servicesData[slug];
-    const [activeFaq, setActiveFaq] = useState(null);
+
 
     if (!service) {
         return (

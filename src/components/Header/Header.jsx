@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+
+
+import { Link } from 'react-router-dom';
 import Button from '../common/Button';
 import './Header.css';
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
-    const location = useLocation();
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -15,16 +17,7 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Use smooth scroll for hash links on home page, otherwise navigate
-    const handleLinkClick = (e, path) => {
-        if (location.pathname === '/' && path.startsWith('#')) {
-            e.preventDefault();
-            const element = document.querySelector(path);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    };
+
 
     return (
         <header className={`header-container ${isScrolled ? 'header-scrolled' : ''}`}>

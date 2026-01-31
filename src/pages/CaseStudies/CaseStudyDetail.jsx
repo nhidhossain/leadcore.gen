@@ -9,11 +9,7 @@ const CaseStudyDetail = () => {
     const [caseStudy, setCaseStudy] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        loadCaseStudy();
-    }, [slug]);
-
-    const loadCaseStudy = async () => {
+    const loadCaseStudy = React.useCallback(async () => {
         try {
             const data = await caseStudyService.getCaseStudyBySlug(slug);
             setCaseStudy(data);
@@ -22,7 +18,12 @@ const CaseStudyDetail = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [slug]);
+
+    useEffect(() => {
+        loadCaseStudy();
+    }, [loadCaseStudy]);
+
 
     if (loading) {
         return <div className="loading">Loading case study...</div>;

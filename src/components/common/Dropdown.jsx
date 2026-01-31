@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+
 import { ChevronDown } from 'lucide-react';
 import './Dropdown.css';
 
@@ -51,6 +52,14 @@ const Dropdown = ({
         }
     }, [isOpen]);
 
+    const handleSelect = useCallback((optionValue) => {
+        onChange(optionValue);
+        setIsOpen(false);
+        setFocusedIndex(-1);
+    }, [onChange]);
+
+
+
     // Keyboard navigation
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -86,7 +95,8 @@ const Dropdown = ({
             document.addEventListener('keydown', handleKeyDown);
             return () => document.removeEventListener('keydown', handleKeyDown);
         }
-    }, [isOpen, focusedIndex, options]);
+    }, [isOpen, focusedIndex, options, handleSelect]);
+
 
     // Scroll focused item into view
     useEffect(() => {
@@ -112,11 +122,7 @@ const Dropdown = ({
         }
     };
 
-    const handleSelect = (optionValue) => {
-        onChange(optionValue);
-        setIsOpen(false);
-        setFocusedIndex(-1);
-    };
+
 
     const containerClasses = `dropdown-container ${fullWidth ? 'dropdown-full-width' : ''} ${className}`;
     const triggerClasses = `dropdown-trigger ${isOpen ? 'dropdown-trigger-open' : ''} ${disabled ? 'dropdown-trigger-disabled' : ''}`;
